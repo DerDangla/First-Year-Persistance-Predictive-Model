@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>First Year Persistence Prediction</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
     <div class="container p-4">
         <h1 class="text-center">First Year Persistence Prediction</h1>
-        <form>
+        <form id="predictionForm">
             <div class="row border border-dark">
                 <!-- Column 1 -->
                 <div class="col-md-6">
-                    <!-- Fields 1-6 -->
                     <div class="form-group">
                         <label for="first_term_gpa">First Term GPA</label>
                         <input type="number" class="form-control id="first_term_gpa" name="first_term_gpa" min="0.0" max="4.0" step="0.1" required>
@@ -66,8 +66,7 @@
                 </div>
 
                 <!-- Column 2 -->
-                <div class="col-md-6">
-                    <!-- Fields 7-12 -->
+                <div class="col-md-6 border border-dark">
                     <div class="form-group">
                         <label for="field7">Coop</label>
                         <select class="form-control" id="field7">
@@ -121,9 +120,6 @@
             <div class="d-grid mx-auto border border-dark">
                 <button type="submit" class="btn btn-primary">Predict</button>
             </div>
-            <div class="d-grid gap-2 col-6 mx-auto border border-dark">
-                <button class="btn btn-primary" type="button">Button</button>
-              </div>
         </form>
     </div>
 
