@@ -35,3 +35,5 @@ def make_prediction(input_data):
     prediction_result = "Student will not Persist"
     if predicted_class[0] == 1:
         prediction_result = "Student will Persist"
+    
+    return prediction_result
