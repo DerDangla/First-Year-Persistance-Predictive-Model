@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Year Persistence Prediction</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container p-4">
+        <h1 class="text-center">First Year Persistence Prediction</h1>
+        <form>
+            <div class="row border border-dark">
+                <!-- Column 1 -->
+                <div class="col-md-6">
+                    <!-- Fields 1-6 -->
+                    <div class="form-group">
+                        <label for="first_term_gpa">First Term GPA</label>
+                        <input type="number" class="form-control id="first_term_gpa" name="first_term_gpa" min="0.0" max="4.0" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="second_term_gpa">Second Term GPA</label>
+                        <input type="number" class="form-control id="second_term_gpa" name="second_term_gpa" min="0.0" max="4.0" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="field1">First Language</label>
+                        <select class="form-control" id="field1">
+                            <option>English</option>
+                            <option>French</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="field1">Funding</label>
+                        <select class="form-control" id="field1">
+                            <option>Apprentice_PS</option>
+                            <option>GPOG_FT</option>
+                            <option>Intl Offshore</option>
+                            <option>Intl Regular</option>
+                            <option>Intl Transfer</option>
+                            <option>Joint Program Ryerson</option>
+                            <option>Joint Program UTSC</option>
+                            <option>Second Career Program</option>
+                            <option>Work Safety Insurance Board</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="field1">School</label>
+                        <select class="form-control" id="field1">
+                            <option>Advancement</option>
+                            <option>Business</option>
+                            <option>Communications</option>
+                            <option>Community and Health</option>
+                            <option>Hospitality</option>
+                            <option>Engineering</option>
+                            <option>Transportation</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="field1">FastTrack</label>
+                        <select class="form-control" id="field1">
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="col-md-6">
+                    <!-- Fields 7-12 -->
+                    <div class="form-group">
+                        <label for="field7">Coop</label>
+                        <select class="form-control" id="field7">
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="field7">Residency</label>
+                        <select class="form-control" id="field7">
+                            <option>Domestic</option>
+                            <option>International</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="field7">Gender</label>
+                        <select class="form-control" id="field7">
+                            <option>Female</option>
+                            <option>Male</option>
+                            <option>Neutral</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="field7">Previous Education</label>
+                        <select class="form-control" id="field7">
+                            <option>HighSchool</option>
+                            <option>PostSecondary</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="field7">Age Group</label>
+                        <select class="form-control" id="field7">
+                            <option>0 to 18</option>
+                            <option>19 to 20</option>
+                            <option>21 to 25</option>
+                            <option>26 to 30</option>
+                            <option>31 to 35</option>
+                            <option>36 to 40</option>
+                            <option>41 to 50</option>
+                            <option>51 to 60</option>
+                            <option>61 to 65</option>
+                            <option>66+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="english_grade">English Grade</label>
+                        <input type="number" class="form-control id="english_grade" name="english_grade" min="2" max="10" step="1" required>
+                    </div>
+                </div>
+            </div>
+            <div class="d-grid mx-auto border border-dark">
+                <button type="submit" class="btn btn-primary">Predict</button>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto border border-dark">
+                <button class="btn btn-primary" type="button">Button</button>
+              </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
