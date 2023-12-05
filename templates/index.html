@@ -6,121 +6,133 @@
     <title>First Year Persistence Prediction</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <style>
+        .custom-container {
+            max-width: 70%;
+            padding: 15px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
     <div class="container p-4">
         <h1 class="text-center">First Year Persistence Prediction</h1>
-        <form id="predictionForm">
-            <div class="row border border-dark">
-                <!-- Column 1 -->
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="first_term_gpa">First Term GPA</label>
-                        <input type="number" class="form-control id="first_term_gpa" name="first_term_gpa" min="0.0" max="4.0" step="0.1" required>
+        <div class="custom-container border border-dark">
+            <form id="predictionForm" method="post" action="/predict">
+                <div class="row">
+                    <!-- Column 1 -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="first_term_gpa">First Term GPA</label>
+                            <input type="number" class="form-control id="first_term_gpa" name="first_term_gpa" min="0.000000" max="5.000000" step="0.000001" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="second_term_gpa">Second Term GPA</label>
+                            <input type="number" class="form-control id="second_term_gpa" name="second_term_gpa" min="0.000000" max="5.000000" step="0.000001" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="first_language">First Language</label>
+                            <select class="form-control" id="first_language" name="first_language">
+                                <option>English</option>
+                                <option>French</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="funding">Funding</label>
+                            <select class="form-control" id="funding" name="funding">
+                                <option>Apprentice_PS</option>
+                                <option>GPOG_FT</option>
+                                <option>Intl Offshore</option>
+                                <option>Intl Regular</option>
+                                <option>Intl Transfer</option>
+                                <option>Joint Program Ryerson</option>
+                                <option>Joint Program UTSC</option>
+                                <option>Second Career Program</option>
+                                <option>Work Safety Insurance Board</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="school">School</label>
+                            <select class="form-control" id="school" name="school">
+                                <option>Advancement</option>
+                                <option>Business</option>
+                                <option>Communications</option>
+                                <option>Community and Health</option>
+                                <option>Hospitality</option>
+                                <option>Engineering</option>
+                                <option>Transportation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="fast_track">FastTrack</label>
+                            <select class="form-control" id="fast_track" name="fast_track">
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="second_term_gpa">Second Term GPA</label>
-                        <input type="number" class="form-control id="second_term_gpa" name="second_term_gpa" min="0.0" max="4.0" step="0.1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="field1">First Language</label>
-                        <select class="form-control" id="field1">
-                            <option>English</option>
-                            <option>French</option>
-                            <option>Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="field1">Funding</label>
-                        <select class="form-control" id="field1">
-                            <option>Apprentice_PS</option>
-                            <option>GPOG_FT</option>
-                            <option>Intl Offshore</option>
-                            <option>Intl Regular</option>
-                            <option>Intl Transfer</option>
-                            <option>Joint Program Ryerson</option>
-                            <option>Joint Program UTSC</option>
-                            <option>Second Career Program</option>
-                            <option>Work Safety Insurance Board</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="field1">School</label>
-                        <select class="form-control" id="field1">
-                            <option>Advancement</option>
-                            <option>Business</option>
-                            <option>Communications</option>
-                            <option>Community and Health</option>
-                            <option>Hospitality</option>
-                            <option>Engineering</option>
-                            <option>Transportation</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="field1">FastTrack</label>
-                        <select class="form-control" id="field1">
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select>
-                    </div>
-                </div>
 
-                <!-- Column 2 -->
-                <div class="col-md-6 border border-dark">
-                    <div class="form-group">
-                        <label for="field7">Coop</label>
-                        <select class="form-control" id="field7">
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="field7">Residency</label>
-                        <select class="form-control" id="field7">
-                            <option>Domestic</option>
-                            <option>International</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="field7">Gender</label>
-                        <select class="form-control" id="field7">
-                            <option>Female</option>
-                            <option>Male</option>
-                            <option>Neutral</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="field7">Previous Education</label>
-                        <select class="form-control" id="field7">
-                            <option>HighSchool</option>
-                            <option>PostSecondary</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="field7">Age Group</label>
-                        <select class="form-control" id="field7">
-                            <option>0 to 18</option>
-                            <option>19 to 20</option>
-                            <option>21 to 25</option>
-                            <option>26 to 30</option>
-                            <option>31 to 35</option>
-                            <option>36 to 40</option>
-                            <option>41 to 50</option>
-                            <option>51 to 60</option>
-                            <option>61 to 65</option>
-                            <option>66+</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="english_grade">English Grade</label>
-                        <input type="number" class="form-control id="english_grade" name="english_grade" min="2" max="10" step="1" required>
+                    <!-- Column 2 -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="coop">Coop</label>
+                            <select class="form-control" id="coop" name="coop">
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="residency">Residency</label>
+                            <select class="form-control" id="residency" name="residency">
+                                <option>Domestic</option>
+                                <option>International</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select class="form-control" id="gender" name="gender">
+                                <option>Female</option>
+                                <option>Male</option>
+                                <option>Neutral</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="previous_education">Previous Education</label>
+                            <select class="form-control" id="previous_education" name="previous_education">
+                                <option>HighSchool</option>
+                                <option>PostSecondary</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="age_group">Age Group</label>
+                            <select class="form-control" id="age_group" name="age_group">
+                                <option>0 to 18</option>
+                                <option>19 to 20</option>
+                                <option>21 to 25</option>
+                                <option>26 to 30</option>
+                                <option>31 to 35</option>
+                                <option>36 to 40</option>
+                                <option>41 to 50</option>
+                                <option>51 to 60</option>
+                                <option>61 to 65</option>
+                                <option>66+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="english_grade">English Grade</label>
+                            <input type="number" class="form-control id="english_grade" name="english_grade" min="1" max="10" step="1" required>
+                        </div>
                     </div>
                 </div>
+                <div class="d-grid mx-auto">
+                    <button type="submit" class="btn btn-primary">Predict</button>
+                </div>
+            </form>
+            <div class="d-grid mx-auto">
+                {{prediction}}
             </div>
-            <div class="d-grid mx-auto border border-dark">
-                <button type="submit" class="btn btn-primary">Predict</button>
-            </div>
-        </form>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

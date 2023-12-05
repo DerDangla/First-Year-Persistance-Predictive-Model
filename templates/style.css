@@ -1,9 +1,4 @@
-.row {
-    max-width: 30%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 body{
     background-color: aqua;
+    font-family: Arial, sans-serif;
 }
