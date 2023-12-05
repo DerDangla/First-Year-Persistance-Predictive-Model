@@ -3,7 +3,9 @@ from flask import Flask, render_template, request, jsonify
 import tensorflow as tf
 import joblib
 import pandas as pd
+import os
 
+os.environ.get('KEY')
 ohe = joblib.load("models/ohe.pkl")
 scaler = joblib.load("models/scaler.pkl")
 nn_model = tf.keras.models.load_model('models/model.h5', compile=False)
