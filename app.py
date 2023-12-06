@@ -37,10 +37,8 @@ def predict():
 @app.route("/api/predict", methods=["POST"])
 def predict_api():
     input_data = request.get_json(force=True)
-
     prediction_result = make_prediction(input_data)
-            
-    return jsonify({prediction_result: prediction_result})
+    return jsonify({'prediction': prediction_result})
 
 # Run the Flask application
 if __name__ == '__main__':
