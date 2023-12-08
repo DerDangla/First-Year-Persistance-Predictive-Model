@@ -1,7 +1,6 @@
 # Import the Flask class from the flask module
 from flask import Flask, render_template, request, jsonify
 from utils import make_prediction
-import pandas as pd
 import os
 
 os.environ.get('KEY')
@@ -19,6 +18,7 @@ def predict():
         input_data = {
             'First_Term_GPA': request.form.get('first_term_gpa'),
             'Second_Term_GPA': request.form.get('second_term_gpa'),
+            'English_Grade': request.form.get('english_grade'),
             'First_Language': request.form.get('first_language'),
             'Funding': request.form.get('funding'),
             'School': request.form.get('school'),
@@ -27,8 +27,7 @@ def predict():
             'Residency': request.form.get('residency'),
             'Gender': request.form.get('gender'),
             'Previous_Education': request.form.get('previous_education'),
-            'Age_Group': request.form.get('age_group'),
-            'English_Grade': request.form.get('english_grade')
+            'Age_Group': request.form.get('age_group')
         }
         prediction_result = make_prediction(input_data)
 
