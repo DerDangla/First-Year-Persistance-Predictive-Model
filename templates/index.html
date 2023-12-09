@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>First Year Persistence Prediction</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-    <style>
-        .custom-container {
-            max-width: 70%;
-            padding: 15px;
-            margin: 0 auto;
-        }
-    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <div class="container p-4">
         <h1 class="text-center">First Year Persistence Prediction</h1>
         <div class="custom-container border border-dark">
-            <form id="predictionForm" method="post" action="/predict">
+            <form id="predictionForm">
                 <div class="row">
                     <!-- Column 1 -->
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="first_term_gpa">First Term GPA</label>
-                            <input type="number" class="form-control id="first_term_gpa" name="first_term_gpa" min="0.000000" max="5.000000" step="0.000001" required>
+                            <input type="number" class="form-control" id="first_term_gpa" name="first_term_gpa" min="0.000000" max="5.000000" step="0.000001" required>
                         </div>
                         <div class="form-group">
                             <label for="second_term_gpa">Second Term GPA</label>
-                            <input type="number" class="form-control id="second_term_gpa" name="second_term_gpa" min="0.000000" max="5.000000" step="0.000001" required>
+                            <input type="number" class="form-control" id="second_term_gpa" name="second_term_gpa" min="0.000000" max="5.000000" step="0.000001" required>
                         </div>
                         <div class="form-group">
                             <label for="first_language">First Language</label>
@@ -121,23 +119,44 @@
                         </div>
                         <div class="form-group">
                             <label for="english_grade">English Grade</label>
-                            <input type="number" class="form-control id="english_grade" name="english_grade" min="1" max="10" step="1" required>
+                            <input type="number" class="form-control" id="english_grade" name="english_grade" min="1" max="10" step="1" required>
                         </div>
                     </div>
                 </div>
                 <div class="d-grid mx-auto">
                     <button type="submit" class="btn btn-primary">Predict</button>
+                    <button type="button" class="btn btn-primary" id="btn_scores">Scores</button>
+                    <button type="button" class="btn btn-primary" id="btn_summary">Summary</button>
                 </div>
             </form>
             <div class="d-grid mx-auto">
-                {{prediction_result}}
+                <!--<p id="resultText" name="resultText" class="text-center"></p>-->
+                <!--{{prediction_result}}-->
             </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="resultText" name="resultText" class="text-center"></p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+    
 </body>
 </html>

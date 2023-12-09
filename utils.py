@@ -26,8 +26,9 @@ def make_prediction(input_data):
     # Since it's a binary classification, you can convert this probability to a class label
     predicted_class = (prediction > 0.5).astype(int)
 
+    #prediction_result = predicted_class[0][0]
     prediction_result = "Student will not Persist"
-    if predicted_class[0] == 1:
+    if predicted_class[0][0] == 1:
         prediction_result = "Student will Persist"
 
     return prediction_result
