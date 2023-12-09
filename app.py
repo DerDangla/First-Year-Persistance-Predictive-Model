@@ -24,12 +24,10 @@ def home():
     return render_template("index.html")
 
 class AIModel():
-    """ 
-    AIModel Model: This class will open the model file, and the csv files.
-    """
 
+    # This class will handle the model file and the csv files.
     def __init__(self):
-        #TODO load the model
+        #load the model
         self.model = tf.keras.models.load_model('models/model.h5', compile=False)
         self.ohe = joblib.load("models/ohe.pkl")
         self.scaler = joblib.load("models/scaler.pkl")
@@ -39,9 +37,6 @@ class AIModel():
 
         self.X_test_df = pd.read_csv(path.join(self.deploy_folder,"X_test_data.csv"))
         self.y_test_df = pd.read_csv(path.join(self.deploy_folder,"y_test_data.csv")).to_numpy()
-
-        #self.label_dict = {'FirstYearPersistence_no': 0, 'FirstYearPersistence_yes': 1}
-        #self.class_names = ['FirstTermGpa', 'SecondTermGpa', 'FirstLanguage', 'Funding', 'School', 'FastTrack', 'Coop', 'Residency', 'Gender', 'PreviousEducation', 'AgeGroup', 'HighSchoolAverageMark', 'MathScore', 'EnglishGrade']
 
 
 @app.route("/api/predict", methods=["POST"])
@@ -81,7 +76,7 @@ def summary():
     string_list = []
 
     # Get Summary of the AI model (Tensorflow, Keras) and fill the list string_list LIST
-    nn_model.model.summary(line_length=80, print_fn=lambda x: string_list.append(x))
+    nn_model.model.summary(line_length=42, print_fn=lambda x: string_list.append(x))
 
     # Transform the list into string variable
     summary_json = "\n".join(string_list)
@@ -98,20 +93,16 @@ def scores():
     # Predict the Test data
     y_pred = nn_model.model.predict(nn_model.X_test_df)
 
-    # Label predict values
-    #final_predict_labeled = np.argmax(y_pred, axis=1)
-    
     # Convert probabilities to class labels
     final_predict_labeled = [1 if x > 0.5 else 0 for x in y_pred]
 
-    # Scores / Stats of the model compared the Test Data with the predict values
-    accuracy = (accuracy_score(nn_model.y_test_df, final_predict_labeled) * 100)
-    precision = (precision_score(nn_model.y_test_df, final_predict_labeled) * 100)
-    recall = (recall_score(nn_model.y_test_df, final_predict_labeled) * 100)
-    f1 = (f1_score(nn_model.y_test_df, final_predict_labeled) * 100)
-    roc_auc = (roc_auc_score(nn_model.y_test_df, final_predict_labeled) * 100)
+    # get score and stats of the model compared the Test Data with the predict values
+    accuracy = round(accuracy_score(nn_model.y_test_df, final_predict_labeled) * 100, 3)
+    precision = round(precision_score(nn_model.y_test_df, final_predict_labeled) * 100, 3)
+    recall = round(recall_score(nn_model.y_test_df, final_predict_labeled) * 100, 3)
+    f1 = round(f1_score(nn_model.y_test_df, final_predict_labeled) * 100, 3)
+    roc_auc = round(roc_auc_score(nn_model.y_test_df, final_predict_labeled) * 100, 3)
     conf_matrix = confusion_matrix(nn_model.y_test_df, final_predict_labeled)         
-    #classification_report_var = classification_report(ai_model.y_test_df.argmax(axis=1), final_predict_labeled, target_names=ai_model.label_dict)
 
     # Json Response with all stats/scores
     resJson = {
@@ -121,10 +112,28 @@ def scores():
         "f1": f1,
         "roc_auc": roc_auc,
         "confussion_matrix": str(conf_matrix),
-        #"classification_report_var": classification_report_var
     }
 
     return jsonify({'output':resJson})
+
+@app.route('/get_random_data')
+def get_csv_data():
+    
+    nn_model = AIModel()
+    
+    # Just reshape it directly
+    y_test_reshaped = nn_model.y_test_df.reshape(92,1)
+    
+    test_set = np.concatenate((nn_model.scaler.inverse_transform(nn_model.X_test_df.iloc[:,0:3]), 
+                               nn_model.ohe.inverse_transform(nn_model.X_test_df.iloc[:,3:]), 
+                               y_test_reshaped), axis=1)
+    
+    random_index = np.random.randint(0, test_set.shape[0])
+    
+    # Convert NumPy array to list before jsonify
+    random_row = test_set[random_index].tolist()
+    
+    return random_row
 
 # Run the Flask application
 if __name__ == '__main__':

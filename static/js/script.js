@@ -2,40 +2,8 @@ $(document).ready(function () {
     // 
     $("#predictionForm").submit(function (event) {
         event.preventDefault();
-        /*
-        const firstTermGPA = $('#first_term_gpa').val();
-        const secondTermGPA = $('#second_term_gpa').val();
-        const englishGrade = $('#english_grade').val();
-        const firstLanguage = $('#first_language').val();
-        const funding = $('#funding').val();
-        const school = $('#school').val();
-        const fastTrack = $('#fast_track').val();
-        const coop = $('#coop').val();
-        const residency = $('#residency').val();
-        const gender = $('#gender').val();
-        const previousEducation = $('#previous_education').val();
-        const ageGroup = $('#age_group').val();
-        
-        //const highSchoolAverageMark = $('#highSchoolAverageMark').val();
-        //const mathScore = $('#mathScore').val();
-        
-        var dataJson = JSON.stringify( 
-            [{
-                "First_Term_GPA": parseFloat(firstTermGPA),
-                "Second_Term_GPA": parseFloat(secondTermGPA),
-                "English_Grade": parseFloat(englishGrade),
-                "First_Language": parseFloat(firstLanguage),
-                "Funding": parseFloat(funding),
-                "School": parseFloat(school),
-                "FastTrack": parseFloat(fastTrack),
-                "Coop": parseFloat(coop),
-                "Residency": parseFloat(residency),
-                "Gender": parseFloat(gender),
-                "Previous_Education": parseFloat(previousEducation),
-                "Age_Group": parseFloat(ageGroup)
-            }] 
-        );
-        */
+
+        //Jsonify form data
         var dataJson = JSON.stringify( 
             {
                 "First_Term_GPA": $('#first_term_gpa').val(),
@@ -53,7 +21,15 @@ $(document).ready(function () {
             }
         );
 
-        // Simulate a short delay (e.g., waiting for API response)
+        // Show the modal and loading spinner
+        $("#resultModal").modal("show");
+        $("#ModalLongTitle").html("Prediction Result");
+        $("#resultLoading").show();
+        $("#resultGood").hide().removeClass("animate-scale-up");
+        $("#resultSad").hide().removeClass("animate-scale-up");
+        $("#resultText").html("Crunching numbers....");
+
+        // Simulate a short delay to wait for API response.
         setTimeout(function () {
             $.ajax({
                 url: "http://127.0.0.1:5000/api/predict",
@@ -65,44 +41,33 @@ $(document).ready(function () {
                 success: function (result,status,xhr) {
                     mockPrediction = result.output
 
-                    // Update the result text
-                    //$("#resultText").html("<b>The predicted First Year Persistence is:</b> <br>" + mockPrediction);
                     $("#resultText").html(mockPrediction);
             
-                    /*
                     // Hide the loading spinner and show the appropriate icon and animate it
                     $("#resultLoading").hide();
-                    if (mockPrediction === 1) {
+                    if (mockPrediction === "Student will Persist") {
                         $("#resultGood").show().addClass("animate-scale-up");
                         $("#resultSad").hide();
                     } else {
                         $("#resultSad").show().addClass("animate-scale-up");
                         $("#resultGood").hide();
                     }
-                    */
+                    
                 }
             });    
-        });    
-        //}, 1000); // 1000 ms (1 second) delay to simulate waiting for the API response
+        }, 1000); // 1000 ms (1 second) delay to simulate waiting for the API response
 
-        // Show the modal and loading spinner
-        $("#resultModal").modal("show");
-        //$("#resultLoading").show();
-        //$("#resultGood").hide().removeClass("animate-scale-up");
-        //$("#resultSad").hide().removeClass("animate-scale-up");
-        //$("#resultText").html("Loading......");
     });
 
     $("#btn_summary").click(function (event) {
         event.preventDefault();
-/*
+
         // Show the modal and loading spinner
-        $("#resultModal").modal("show");
-        $("#resultLoading").show();
-        $("#resultGood").hide().removeClass("animate-scale-up");
-        $("#resultSad").hide().removeClass("animate-scale-up");
-        $("#resultText").html("Loading......");
-*/
+        $("#summaryModal").modal("show");
+        $("#summaryModalLongTitle").html("Model Summary");
+        $("#summaryresultLoading").show();
+        $("#summaryresultText").html("Crunching numbers....");
+
         // Simulate a short delay (e.g., waiting for API response)
         setTimeout(function () {
             $.ajax({
@@ -115,18 +80,10 @@ $(document).ready(function () {
                     mockPrediction = result.output
                             
                     // Update the result text
-                    $("#resultText").html("<b>The summary of the model:</b> <br>" + mockPrediction.replace(/\n/g, "<br>"));
-            /*
-                    // Hide the loading spinner and show the appropriate icon and animate it
-                    $("#resultLoading").hide();
-                    if (mockPrediction !== null) {
-                        $("#resultGood").show().addClass("animate-scale-up");
-                        $("#resultSad").hide();
-                    } else {
-                        $("#resultSad").show().addClass("animate-scale-up");
-                        $("#resultGood").hide();
-                    }
-                    */
+                    $("#summaryresultText").html("<b>The summary of the model:</b> <br>" + mockPrediction.replace(/\n/g, "<br>"));
+
+                    $("#summaryresultLoading").hide();
+
                 }
             });        
         }, 1000); // 1000 ms (1 second) delay to simulate waiting for the API response
@@ -134,14 +91,11 @@ $(document).ready(function () {
 
     $("#btn_scores").click(function (event) {
         event.preventDefault();
-/*
-        // Show the modal and loading spinner
-        $("#resultModal").modal("show");
-        $("#resultLoading").show();
-        $("#resultGood").hide().removeClass("animate-scale-up");
-        $("#resultSad").hide().removeClass("animate-scale-up");
-        $("#resultText").html("Loading......");
-*/
+
+        $("#scoreModal").modal("show");
+        $("#scoreModalLongTitle").html("Model Score");
+        $("#scoreresultLoading").show();
+        $("#scoreresultText").html("Crunching numbers....");
         // Simulate a short delay (e.g., waiting for API response)
         setTimeout(function () {
             $.ajax({
@@ -154,29 +108,47 @@ $(document).ready(function () {
                     mockPrediction = result.output
 
                     // Update the result text
-                    $("#resultText").html(
-                        "<b>Test accuracy:</b> " + mockPrediction.accuracy + "<br>" +
-                        "<b>Test precision:</b> " + mockPrediction.precision + "<br>" +
-                        "<b>Test recall:</b> " + mockPrediction.recall + "<br>" +
-                        "<b>Test f1:</b> " + mockPrediction.f1 + "<br>" +
-                        "<b>Test roc_auc:</b> " + mockPrediction.roc_auc + "<br>" +
-                        "<b>Test confussion_matrix:</b> <br>" + mockPrediction.confussion_matrix.replace(/\n/g, "<br>") + "<br>"
+                    $("#scoreresultText").html(
+                        "<b>Accuracy Score:</b> " + mockPrediction.accuracy + "% <br>" +
+                        "<b>Precision:</b> " + mockPrediction.precision + "%<br>" +
+                        "<b>Recall:</b> " + mockPrediction.recall + "%<br>" +
+                        "<b>F1:</b> " + mockPrediction.f1 + "%<br>" +
+                        "<b>Roc auc:</b> " + mockPrediction.roc_auc + "<br>" +
+                        "<b>Confussion Matrix:</b> <br>" + mockPrediction.confussion_matrix.replace(/\n/g, "<br>") + "<br>"
                         //"<b>Test classification_report_var:</b> <br>" + mockPrediction.classification_report_var.replace(/\n/g, "<br>") + "<br>"
                     );
-/*
-                    // Hide the loading spinner and show the appropriate icon and animate it
-                    $("#resultLoading").hide();
-                    if (mockPrediction !== null) {
-                        $("#resultGood").show().addClass("animate-scale-up");
-                        $("#resultSad").hide();
-                    } else {
-                        $("#resultSad").show().addClass("animate-scale-up");
-                        $("#resultGood").hide();
-                    }
-                    */
+                    $("#scoreresultLoading").hide();
+
                 }
             });        
         }, 1000); // 1000 ms (1 second) delay to simulate waiting for the API response
+        
+    });
+
+    $('#fillFormButton').click(function () {
+        $.ajax({
+            url: '/get_random_data',
+            type: 'GET',
+            success: function(data) {
+                // Assuming data contains keys matching the form field IDs.val()
+
+                $('#first_term_gpa').val(data[0])
+                $('#second_term_gpa').val(data[1])
+                $('#english_grade').val(data[2])
+                $('#first_language').val(data[3])
+                $('#funding').val(data[4])
+                $('#school').val(data[5])
+                $('#fast_track').val(data[6])
+                $('#coop').val(data[7])
+                $('#residency').val(data[8])
+                $('#gender').val(data[9])
+                $('#previous_education').val(data[10])
+                $('#age_group').val(data[11])
+            },
+            error: function(error) {
+                console.log('Error fetching random data:', error);
+            }
+        });
     });
 
 });

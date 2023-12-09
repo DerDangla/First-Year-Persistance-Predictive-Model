@@ -1,7 +1,26 @@
 @charset "UTF-8";
 
+body{
+  background-color: #f2f2f2;
+}
+
 .custom-container {
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   max-width: 70%;
   padding: 15px;
   margin: 0 auto;
+}
+
+.btn {
+  min-width: 150px; /* Adjust the width as needed */
+  height: 40px; /* Adjust the height as needed */
+  margin: auto; /* Centers the button */
+  display: block; /* Allows margin auto to work for horizontal centering */
+}
+
+.button_container {
+  display: flex;
+  justify-content: center; /* This will center the buttons horizontally */
+  align-items: center; /* This will center the buttons vertically */
 }
