@@ -24,3 +24,20 @@ body{
   justify-content: center; /* This will center the buttons horizontally */
   align-items: center; /* This will center the buttons vertically */
 }
+
+/* Media query for screens up to 768px wide (typical mobile screens) */
+@media (max-width: 991px) {
+  .button_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    margin: 5px; /* Add spacing between buttons */
+  }
+
+  .custom-container {
+    max-width: 90%; /* Adjust container width for smaller screens */
+  }
+}

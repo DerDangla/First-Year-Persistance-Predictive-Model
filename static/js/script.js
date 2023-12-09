@@ -29,10 +29,17 @@ $(document).ready(function () {
         $("#resultSad").hide().removeClass("animate-scale-up");
         $("#resultText").html("Crunching numbers....");
 
+        // Determine the base URL based on the current window's location
+        var hostname = window.location.hostname;
+        var baseUrl = (hostname === "127.0.0.1" || hostname === "localhost") ? "http://127.0.0.1:5000" : "http://192.168.2.15:5000";
+
+        // Construct the full API URL
+        var apiUrl = baseUrl + "/api/predict";
+
         // Simulate a short delay to wait for API response.
         setTimeout(function () {
             $.ajax({
-                url: "http://127.0.0.1:5000/api/predict",
+                url: apiUrl,
                 dataType: 'json',
                 type: 'POST',
                 contentType: 'application/json',
@@ -68,10 +75,17 @@ $(document).ready(function () {
         $("#summaryresultLoading").show();
         $("#summaryresultText").html("Crunching numbers....");
 
+        // Determine the base URL based on the current window's location
+        var hostname = window.location.hostname;
+        var baseUrl = (hostname === "127.0.0.1" || hostname === "localhost") ? "http://127.0.0.1:5000" : "http://192.168.2.15:5000";
+
+        // Construct the full API URL
+        var apiUrl = baseUrl + "/api/summary";
+
         // Simulate a short delay (e.g., waiting for API response)
         setTimeout(function () {
             $.ajax({
-                url: "http://127.0.0.1:5000/api/summary",
+                url: apiUrl,
                 dataType: 'json',
                 type: 'GET',
                 contentType: 'application/json',
@@ -96,10 +110,18 @@ $(document).ready(function () {
         $("#scoreModalLongTitle").html("Model Score");
         $("#scoreresultLoading").show();
         $("#scoreresultText").html("Crunching numbers....");
+
+        // Determine the base URL based on the current window's location
+        var hostname = window.location.hostname;
+        var baseUrl = (hostname === "127.0.0.1" || hostname === "localhost") ? "http://127.0.0.1:5000" : "http://192.168.2.15:5000";
+
+        // Construct the full API URL
+        var apiUrl = baseUrl + "/api/scores";
+
         // Simulate a short delay (e.g., waiting for API response)
         setTimeout(function () {
             $.ajax({
-                url: "http://127.0.0.1:5000/api/scores",
+                url: apiUrl,
                 dataType: 'json',
                 type: 'GET',
                 contentType: 'application/json',
