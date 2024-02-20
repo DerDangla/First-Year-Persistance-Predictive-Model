@@ -11,11 +11,7 @@ $(document).ready(function () {
                 "English_Grade": $('#english_grade').val(),
                 "First_Language": $('#first_language').val(),
                 "Funding": $('#funding').val(),
-                "School": $('#school').val(),
                 "FastTrack": $('#fast_track').val(),
-                "Coop": $('#coop').val(),
-                "Residency": $('#residency').val(),
-                "Gender": $('#gender').val(),
                 "Previous_Education": $('#previous_education').val(),
                 "Age_Group": $('#age_group').val()
             }
@@ -154,18 +150,14 @@ $(document).ready(function () {
             success: function(data) {
                 // Assuming data contains keys matching the form field IDs.val()
 
-                $('#first_term_gpa').val(data[0])
-                $('#second_term_gpa').val(data[1])
-                $('#english_grade').val(data[2])
-                $('#first_language').val(data[3])
-                $('#funding').val(data[4])
-                $('#school').val(data[5])
-                $('#fast_track').val(data[6])
-                $('#coop').val(data[7])
-                $('#residency').val(data[8])
-                $('#gender').val(data[9])
-                $('#previous_education').val(data[10])
-                $('#age_group').val(data[11])
+                $('#first_term_gpa').val(data.First_Term_GPA)
+                $('#second_term_gpa').val(data.Second_Term_GPA)
+                $('#first_language').val(data.First_Language)
+                $('#funding').val(data.Funding)
+                $('#fast_track').val(data.FastTrack)
+                $('#previous_education').val(data.Previous_Education)
+                $('#age_group').val(data.Age_Group)
+                $('#english_grade').val(data.English_Grade)
             },
             error: function(error) {
                 console.log('Error fetching random data:', error);
