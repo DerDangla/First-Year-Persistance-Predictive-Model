@@ -59,23 +59,22 @@ def predict():
     
     # Apply Ordinal Encoding to English_Grade
     english_grade_map = {
-        1: "Level-130",
-        2: "Level-131",
-        3: "Level-140",
-        4: "Level-141",
-        5: "Level-150",
-        6: "Level-151",
-        7: "Level-160",
-        8: "Level-161",
-        9: "Level-170",
-        10: "Level-171",
-        11: "Level-180"
+        "Level-130": 1,
+        "Level-131": 2,
+        "Level-140": 3,
+        "Level-141": 4,
+        "Level-150": 5,
+        "Level-151": 6,
+        "Level-160": 7,
+        "Level-161": 8,
+        "Level-170": 9,
+        "Level-171": 10,
+        "Level-180": 11 
     }
     
-    # Reverse the mapping
-    reverse_english_grade_map = {value: key for key, value in english_grade_map.items()}
-    input_df['English_Grade'] = input_df['English_Grade'].map(reverse_english_grade_map ).fillna("Unknown")
-
+    # Map english grade to the ordinal encoding
+    input_df['English_Grade'] = input_df['English_Grade'].map(english_grade_map ).fillna("Unknown")
+    
     # Identify the categorical columns excluding 'English_Grade'
     categorical_columns = ['First_Language','Funding','FastTrack','Previous_Education','Age_Group','Second_Term_GPA_missing'] 
 
@@ -94,6 +93,7 @@ def predict():
        'Age_Group_41 to 50', 'Age_Group_51 to 60', 'Second_Term_GPA_missing_N',
        'Second_Term_GPA_missing_Y']
     
+    # Ensure all necessary columns are present, filling missing ones with 0 (for the one-hot encoded features)
     for column in encoded_columns:
         if column not in input_df.columns:
             input_df[column] = 0
