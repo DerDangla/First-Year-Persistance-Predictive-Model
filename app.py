@@ -80,7 +80,7 @@ def predict():
 
     # One hot encode the categorical columns using pd.get_dummies
     input_df = pd.get_dummies(input_df, columns=categorical_columns, dtype=int) 
-
+    
     # Ensure all necessary columns are present, filling missing ones with 0 (for the one-hot encoded features)
     encoded_columns = ['First_Term_GPA', 'Second_Term_GPA', 'English_Grade',
        'First_Language_English', 'First_Language_French',
@@ -198,9 +198,6 @@ def get_csv_data():
         'Age_Group': random.choice(['0 to 18', '19 to 20', '21 to 25', '26 to 30', '31 to 35', '36 to 40', '41 to 50', '51 to 60', '61 to 65', '66+']),
         'English_Grade': random.choice(['Level-130', 'Level-131', 'Level-140', 'Level-141', 'Level-150', 'Level-151', 'Level-160', 'Level-161', 'Level-170', 'Level-171', 'Level-180'])
     }
-    
-    print(random_row)
-    
     
     return random_row
 
