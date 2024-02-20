@@ -29,7 +29,7 @@ class AIModel():
     # This class will handle the model file and the csv files.
     def __init__(self):
         #load the model
-        self.model = tf.keras.models.load_model('models/model.h5', compile=False)
+        self.model = tf.keras.models.load_model('models/model.keras', compile=False)
         #self.ohe = joblib.load("models/ohe.pkl")
         self.scaler = joblib.load("models/scaler.pkl")
 
