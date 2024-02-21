@@ -1,4 +1,4 @@
-# COMP-258-Group01-Project
+# First Year Persistance Prediction
 
 ## Project Requirement:
 Create an application to automate classification/prediction tasks. Develop a full-stack app composed of:
