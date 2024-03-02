@@ -8,11 +8,10 @@ An application to automate classification/prediction tasks. Develop a full-stack
 1.	A friendly UI that allows users and administrators to use/administer the system.
 2.	Structured and/or unstructured data access API.
 3.	A modern backend API to perform classification/prediction tasks.
-You will have to sign the non-disclosure agreement for using the dataset.
 
-You are supposed to use Neural Networks and build a full-stack intelligent solution for 1st year student persistence problem. 
+Used Deep Neural Networks and built a full-stack intelligent solution for 1st year student persistence problem. 
 
-Apply the correct architectural patterns for both frontend and backend parts.
+Applied the correct architectural patterns for both frontend and backend parts.
 
 ## Preview:
 ![image](https://github.com/DerDangla/First-Year-Persistance-Predictive-Model/assets/8519156/573d35c4-d71e-4da4-b9aa-a2039b473f4a)
