@@ -1,9 +1,6 @@
 # First Year Persistence Prediction
 
-## Machine Learning Model:
-machine_learning_nn_model.ipynb
-
-## Project Requirement:
+## Overview:
 An application to automate classification/prediction tasks. Develop a full-stack app composed of:
 1.	A friendly UI that allows users and administrators to use/administer the system.
 2.	Structured and/or unstructured data access API.
@@ -12,6 +9,9 @@ An application to automate classification/prediction tasks. Develop a full-stack
 Used Deep Neural Networks and built a full-stack intelligent solution for 1st year student persistence problem. 
 
 Applied the correct architectural patterns for both frontend and backend parts.
+
+## Machine Learning Model:
+machine_learning_nn_model.ipynb
 
 ## Preview:
 ![image](https://github.com/DerDangla/First-Year-Persistance-Predictive-Model/assets/8519156/573d35c4-d71e-4da4-b9aa-a2039b473f4a)
