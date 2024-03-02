@@ -1,4 +1,4 @@
-# First Year Persistance Prediction
+# First Year Persistence Prediction
 
 ## Machine Learning Model:
 machine_learning_nn_model.ipynb
