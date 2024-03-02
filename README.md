@@ -1,7 +1,10 @@
 # First Year Persistance Prediction
 
+## Machine Learning Model:
+machine_learning_nn_model.ipynb
+
 ## Project Requirement:
-Create an application to automate classification/prediction tasks. Develop a full-stack app composed of:
+An application to automate classification/prediction tasks. Develop a full-stack app composed of:
 1.	A friendly UI that allows users and administrators to use/administer the system.
 2.	Structured and/or unstructured data access API.
 3.	A modern backend API to perform classification/prediction tasks.
@@ -19,10 +22,6 @@ Apply the correct architectural patterns for both frontend and backend parts.
 
 ### Model Result after Prediction
 ![image](https://github.com/DerDangla/First-Year-Persistance-Predictive-Model/assets/8519156/81f0d645-a53a-49eb-835e-985e53f0f9f7)
-
-
-## Machine Learning Model:
-machine_learning_nn_model.ipynb
 
 ## How to run:
 
